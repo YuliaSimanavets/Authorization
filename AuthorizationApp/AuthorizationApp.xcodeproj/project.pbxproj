@@ -15,9 +15,14 @@
 		CA18C8672BF26AC700987B43 /* Newable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18C8662BF26AC700987B43 /* Newable.swift */; };
 		CA18C8692BF26AE300987B43 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18C8682BF26AE300987B43 /* UIView+Utils.swift */; };
 		CA18C86B2BF26AEC00987B43 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18C86A2BF26AEC00987B43 /* UIStackView.swift */; };
-		CA18C86F2BF26B2800987B43 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA18C86E2BF26B2800987B43 /* SnapKit */; };
-		CA18C8712BF26B2800987B43 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CA18C8702BF26B2800987B43 /* SnapKit-Dynamic */; };
 		CA18C8742BF26B8D00987B43 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18C8732BF26B8D00987B43 /* RegistrationViewController.swift */; };
+		CADE7BA32BF2858600E55F7C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BA22BF2858600E55F7C /* SnapKit */; };
+		CADE7BA52BF2858600E55F7C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BA42BF2858600E55F7C /* SnapKit-Dynamic */; };
+		CADE7BA92BF2880A00E55F7C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BA82BF2880A00E55F7C /* GoogleSignIn */; };
+		CADE7BAB2BF2880A00E55F7C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BAA2BF2880A00E55F7C /* GoogleSignInSwift */; };
+		CADE7BAD2BF288AD00E55F7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CADE7BAC2BF288AD00E55F7C /* GoogleService-Info.plist */; };
+		CADE7BB02BF289AC00E55F7C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BAF2BF289AC00E55F7C /* FirebaseAnalytics */; };
+		CADE7BB22BF289AC00E55F7C /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BB12BF289AC00E55F7C /* FirebaseAnalyticsSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,7 @@
 		CA18C8682BF26AE300987B43 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		CA18C86A2BF26AEC00987B43 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		CA18C8732BF26B8D00987B43 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		CADE7BAC2BF288AD00E55F7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,8 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA18C86F2BF26B2800987B43 /* SnapKit in Frameworks */,
-				CA18C8712BF26B2800987B43 /* SnapKit-Dynamic in Frameworks */,
+				CADE7BB22BF289AC00E55F7C /* FirebaseAnalyticsSwift in Frameworks */,
+				CADE7BA32BF2858600E55F7C /* SnapKit in Frameworks */,
+				CADE7BA52BF2858600E55F7C /* SnapKit-Dynamic in Frameworks */,
+				CADE7BA92BF2880A00E55F7C /* GoogleSignIn in Frameworks */,
+				CADE7BB02BF289AC00E55F7C /* FirebaseAnalytics in Frameworks */,
+				CADE7BAB2BF2880A00E55F7C /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +84,7 @@
 				CA18C85A2BF2692900987B43 /* Assets.xcassets */,
 				CA18C85C2BF2692900987B43 /* LaunchScreen.storyboard */,
 				CA18C85F2BF2692900987B43 /* Info.plist */,
+				CADE7BAC2BF288AD00E55F7C /* GoogleService-Info.plist */,
 			);
 			path = AuthorizationApp;
 			sourceTree = "<group>";
@@ -121,8 +132,12 @@
 			);
 			name = AuthorizationApp;
 			packageProductDependencies = (
-				CA18C86E2BF26B2800987B43 /* SnapKit */,
-				CA18C8702BF26B2800987B43 /* SnapKit-Dynamic */,
+				CADE7BA22BF2858600E55F7C /* SnapKit */,
+				CADE7BA42BF2858600E55F7C /* SnapKit-Dynamic */,
+				CADE7BA82BF2880A00E55F7C /* GoogleSignIn */,
+				CADE7BAA2BF2880A00E55F7C /* GoogleSignInSwift */,
+				CADE7BAF2BF289AC00E55F7C /* FirebaseAnalytics */,
+				CADE7BB12BF289AC00E55F7C /* FirebaseAnalyticsSwift */,
 			);
 			productName = AuthorizationApp;
 			productReference = CA18C84E2BF2692700987B43 /* AuthorizationApp.app */;
@@ -153,7 +168,9 @@
 			);
 			mainGroup = CA18C8452BF2692700987B43;
 			packageReferences = (
-				CA18C86D2BF26B2800987B43 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CADE7BA12BF2858600E55F7C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CADE7BA72BF2880A00E55F7C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				CADE7BAE2BF289AC00E55F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CA18C84F2BF2692700987B43 /* Products */;
 			projectDirPath = "";
@@ -171,6 +188,7 @@
 			files = (
 				CA18C85B2BF2692900987B43 /* Assets.xcassets in Resources */,
 				CA18C85E2BF2692900987B43 /* Base in Resources */,
+				CADE7BAD2BF288AD00E55F7C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +420,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CA18C86D2BF26B2800987B43 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		CADE7BA12BF2858600E55F7C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -410,18 +428,54 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		CADE7BA72BF2880A00E55F7C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
+		CADE7BAE2BF289AC00E55F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.26.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CA18C86E2BF26B2800987B43 /* SnapKit */ = {
+		CADE7BA22BF2858600E55F7C /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CA18C86D2BF26B2800987B43 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = CADE7BA12BF2858600E55F7C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		CA18C8702BF26B2800987B43 /* SnapKit-Dynamic */ = {
+		CADE7BA42BF2858600E55F7C /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CA18C86D2BF26B2800987B43 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = CADE7BA12BF2858600E55F7C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		CADE7BA82BF2880A00E55F7C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CADE7BA72BF2880A00E55F7C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		CADE7BAA2BF2880A00E55F7C /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CADE7BA72BF2880A00E55F7C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		CADE7BAF2BF289AC00E55F7C /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CADE7BAE2BF289AC00E55F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		CADE7BB12BF289AC00E55F7C /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CADE7BAE2BF289AC00E55F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
