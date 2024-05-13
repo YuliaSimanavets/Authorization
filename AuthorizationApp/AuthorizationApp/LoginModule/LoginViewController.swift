@@ -165,17 +165,17 @@ class LoginViewController: UIViewController {
 //     MARK: - Actions
     
     @objc
-    func signInAction() {
+    private func signInAction() {
         
     }
     
     @objc
-    func enterByGoogleAction() {
+    private func enterByGoogleAction() {
 
     }
     
     @objc
-    func createAccountAction() {
+    private func createAccountAction() {
         let registrationVC = RegistrationViewController()
         navigationController?.pushViewController(registrationVC, animated: true)
     }
