@@ -20,9 +20,17 @@
 		CADE7BA52BF2858600E55F7C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BA42BF2858600E55F7C /* SnapKit-Dynamic */; };
 		CADE7BA92BF2880A00E55F7C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BA82BF2880A00E55F7C /* GoogleSignIn */; };
 		CADE7BAB2BF2880A00E55F7C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BAA2BF2880A00E55F7C /* GoogleSignInSwift */; };
-		CADE7BAD2BF288AD00E55F7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CADE7BAC2BF288AD00E55F7C /* GoogleService-Info.plist */; };
 		CADE7BB02BF289AC00E55F7C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BAF2BF289AC00E55F7C /* FirebaseAnalytics */; };
 		CADE7BB22BF289AC00E55F7C /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BB12BF289AC00E55F7C /* FirebaseAnalyticsSwift */; };
+		CADE7BB62BF362B800E55F7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CADE7BB52BF362B800E55F7C /* GoogleService-Info.plist */; };
+		CADE7BDE2BF38D9500E55F7C /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADE7BDD2BF38D9500E55F7C /* EditorViewController.swift */; };
+		CADE7BE02BF3942F00E55F7C /* EditorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADE7BDF2BF3942F00E55F7C /* EditorCollectionViewCell.swift */; };
+		CADE7BE42BF399D100E55F7C /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADE7BE32BF399D100E55F7C /* EditorViewModel.swift */; };
+		CADE7BE62BF3A33C00E55F7C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADE7BE52BF3A33C00E55F7C /* LoginViewModel.swift */; };
+		CADE7BE82BF3A3AE00E55F7C /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADE7BE72BF3A3AE00E55F7C /* AppFlow.swift */; };
+		CADE7BEA2BF3CEFA00E55F7C /* ShareableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADE7BE92BF3CEFA00E55F7C /* ShareableImage.swift */; };
+		CADE7BED2BF3EB4B00E55F7C /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BEC2BF3EB4B00E55F7C /* CropViewController */; };
+		CADE7BEF2BF3EB4B00E55F7C /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = CADE7BEE2BF3EB4B00E55F7C /* TOCropViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +45,13 @@
 		CA18C8682BF26AE300987B43 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		CA18C86A2BF26AEC00987B43 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		CA18C8732BF26B8D00987B43 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		CADE7BAC2BF288AD00E55F7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CADE7BB52BF362B800E55F7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CADE7BDD2BF38D9500E55F7C /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		CADE7BDF2BF3942F00E55F7C /* EditorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorCollectionViewCell.swift; sourceTree = "<group>"; };
+		CADE7BE32BF399D100E55F7C /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
+		CADE7BE52BF3A33C00E55F7C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CADE7BE72BF3A3AE00E55F7C /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		CADE7BE92BF3CEFA00E55F7C /* ShareableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,10 +61,12 @@
 			files = (
 				CADE7BB22BF289AC00E55F7C /* FirebaseAnalyticsSwift in Frameworks */,
 				CADE7BA32BF2858600E55F7C /* SnapKit in Frameworks */,
+				CADE7BEF2BF3EB4B00E55F7C /* TOCropViewController in Frameworks */,
 				CADE7BA52BF2858600E55F7C /* SnapKit-Dynamic in Frameworks */,
 				CADE7BA92BF2880A00E55F7C /* GoogleSignIn in Frameworks */,
 				CADE7BB02BF289AC00E55F7C /* FirebaseAnalytics in Frameworks */,
 				CADE7BAB2BF2880A00E55F7C /* GoogleSignInSwift in Frameworks */,
+				CADE7BED2BF3EB4B00E55F7C /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +97,11 @@
 				CA18C8532BF2692700987B43 /* SceneDelegate.swift */,
 				CA18C86C2BF26B0400987B43 /* LoginModule */,
 				CA18C8722BF26B7D00987B43 /* RegistrationModule */,
+				CADE7BDC2BF38D7E00E55F7C /* EditorModule */,
 				CA18C85A2BF2692900987B43 /* Assets.xcassets */,
 				CA18C85C2BF2692900987B43 /* LaunchScreen.storyboard */,
 				CA18C85F2BF2692900987B43 /* Info.plist */,
-				CADE7BAC2BF288AD00E55F7C /* GoogleService-Info.plist */,
+				CADE7BB52BF362B800E55F7C /* GoogleService-Info.plist */,
 			);
 			path = AuthorizationApp;
 			sourceTree = "<group>";
@@ -95,6 +112,8 @@
 				CA18C8662BF26AC700987B43 /* Newable.swift */,
 				CA18C8682BF26AE300987B43 /* UIView+Utils.swift */,
 				CA18C86A2BF26AEC00987B43 /* UIStackView.swift */,
+				CADE7BE72BF3A3AE00E55F7C /* AppFlow.swift */,
+				CADE7BE92BF3CEFA00E55F7C /* ShareableImage.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -103,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				CA18C8552BF2692700987B43 /* LoginViewController.swift */,
+				CADE7BE52BF3A33C00E55F7C /* LoginViewModel.swift */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -113,6 +133,32 @@
 				CA18C8732BF26B8D00987B43 /* RegistrationViewController.swift */,
 			);
 			path = RegistrationModule;
+			sourceTree = "<group>";
+		};
+		CADE7BDC2BF38D7E00E55F7C /* EditorModule */ = {
+			isa = PBXGroup;
+			children = (
+				CADE7BE22BF399C200E55F7C /* ViewModel */,
+				CADE7BE12BF399BB00E55F7C /* View */,
+			);
+			path = EditorModule;
+			sourceTree = "<group>";
+		};
+		CADE7BE12BF399BB00E55F7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CADE7BDD2BF38D9500E55F7C /* EditorViewController.swift */,
+				CADE7BDF2BF3942F00E55F7C /* EditorCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CADE7BE22BF399C200E55F7C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CADE7BE32BF399D100E55F7C /* EditorViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +184,8 @@
 				CADE7BAA2BF2880A00E55F7C /* GoogleSignInSwift */,
 				CADE7BAF2BF289AC00E55F7C /* FirebaseAnalytics */,
 				CADE7BB12BF289AC00E55F7C /* FirebaseAnalyticsSwift */,
+				CADE7BEC2BF3EB4B00E55F7C /* CropViewController */,
+				CADE7BEE2BF3EB4B00E55F7C /* TOCropViewController */,
 			);
 			productName = AuthorizationApp;
 			productReference = CA18C84E2BF2692700987B43 /* AuthorizationApp.app */;
@@ -171,6 +219,7 @@
 				CADE7BA12BF2858600E55F7C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CADE7BA72BF2880A00E55F7C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				CADE7BAE2BF289AC00E55F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CADE7BEB2BF3EB4A00E55F7C /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = CA18C84F2BF2692700987B43 /* Products */;
 			projectDirPath = "";
@@ -188,7 +237,7 @@
 			files = (
 				CA18C85B2BF2692900987B43 /* Assets.xcassets in Resources */,
 				CA18C85E2BF2692900987B43 /* Base in Resources */,
-				CADE7BAD2BF288AD00E55F7C /* GoogleService-Info.plist in Resources */,
+				CADE7BB62BF362B800E55F7C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,10 +249,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA18C8562BF2692700987B43 /* LoginViewController.swift in Sources */,
+				CADE7BE82BF3A3AE00E55F7C /* AppFlow.swift in Sources */,
 				CA18C86B2BF26AEC00987B43 /* UIStackView.swift in Sources */,
+				CADE7BE62BF3A33C00E55F7C /* LoginViewModel.swift in Sources */,
+				CADE7BEA2BF3CEFA00E55F7C /* ShareableImage.swift in Sources */,
 				CA18C8522BF2692700987B43 /* AppDelegate.swift in Sources */,
+				CADE7BDE2BF38D9500E55F7C /* EditorViewController.swift in Sources */,
 				CA18C8692BF26AE300987B43 /* UIView+Utils.swift in Sources */,
+				CADE7BE02BF3942F00E55F7C /* EditorCollectionViewCell.swift in Sources */,
 				CA18C8742BF26B8D00987B43 /* RegistrationViewController.swift in Sources */,
+				CADE7BE42BF399D100E55F7C /* EditorViewModel.swift in Sources */,
 				CA18C8672BF26AC700987B43 /* Newable.swift in Sources */,
 				CA18C8542BF2692700987B43 /* SceneDelegate.swift in Sources */,
 			);
@@ -352,10 +407,14 @@
 				DEVELOPMENT_TEAM = WB3Y8FF57H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AuthorizationApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to camera.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Our application needs permission to write photos...";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to select photo.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,10 +438,14 @@
 				DEVELOPMENT_TEAM = WB3Y8FF57H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AuthorizationApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to camera.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Our application needs permission to write photos...";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to select photo.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -444,6 +507,14 @@
 				minimumVersion = 10.26.0;
 			};
 		};
+		CADE7BEB2BF3EB4A00E55F7C /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -476,6 +547,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CADE7BAE2BF289AC00E55F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		CADE7BEC2BF3EB4B00E55F7C /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CADE7BEB2BF3EB4A00E55F7C /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		CADE7BEE2BF3EB4B00E55F7C /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CADE7BEB2BF3EB4A00E55F7C /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

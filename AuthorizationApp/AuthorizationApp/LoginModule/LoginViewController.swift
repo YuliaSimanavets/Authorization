@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class LoginViewController: UIViewController {
+    private var viewModel: LoginViewModel
+    
     private let mainTitle = UILabel.new {
         $0.numberOfLines = 0
         $0.textColor = .black
@@ -78,6 +80,18 @@ class LoginViewController: UIViewController {
     private let registrationButton = UIButton.new {
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+    }
+    
+    // MARK: - Lifecycle
+
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -176,7 +190,7 @@ class LoginViewController: UIViewController {
     
     @objc
     private func createAccountAction() {
-        let registrationVC = RegistrationViewController()
+        let registrationVC = AppFlow.registrationView()
         navigationController?.pushViewController(registrationVC, animated: true)
     }
 }
