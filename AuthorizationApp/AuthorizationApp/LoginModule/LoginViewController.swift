@@ -210,7 +210,7 @@ class LoginViewController: UIViewController {
                 self.createAlert(with: "There is no user with this name. Please, sign up.")
             } else {
                 guard let password = passwordTextField.text,
-                      viewModel.validatePassword(password)
+                      viewModel.isValidPassword(password)
                 else { return createAlert(with: "Email or password isn't correct") }
                 goToEditorScreen()
             }
@@ -235,5 +235,13 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let password = (passwordTextField.text ?? "") + string
+        return false
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        passwordTextField.resignFirstResponder()
+        return true
+    }
 }
