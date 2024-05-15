@@ -13,10 +13,10 @@ enum AppFlow {
     }
 
     static func registrationView() -> UIViewController {
-        RegistrationViewController()
+        RegistrationViewController(viewModel: RegistrationViewModel())
     }
     
     static func editorView() -> UIViewController {
-       EditorViewController(viewModel: EditorViewModel())
+        EditorViewController(viewModel: EditorViewModel())
     }
 }

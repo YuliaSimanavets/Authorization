@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class RegistrationViewController: UIViewController {
+    private var viewModel: RegistrationViewModel
+    
     private let mainTitle = UILabel.new {
         $0.numberOfLines = 0
         $0.textColor = .black
@@ -75,10 +77,23 @@ class RegistrationViewController: UIViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
     }
     
+    // MARK: - Lifecycle
+
+    init(viewModel: RegistrationViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         
+        joinButton.addTarget(self, action: #selector(joinTapped), for: .touchUpInside)
         signInButton.addTarget(self, action: #selector(goToSignInAction), for: .touchUpInside)
     }
     
@@ -105,6 +120,13 @@ class RegistrationViewController: UIViewController {
         signInButton.setTitle(" Sign in", for: .normal)
         
         setupConstraints()
+    }
+    
+    private func createAlert(with message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
     private func setupConstraints() {
@@ -146,7 +168,40 @@ class RegistrationViewController: UIViewController {
         }
     }
     
+    private func goToEditorScreen() {
+        let editorViewController = AppFlow.editorView()
+        navigationController?.pushViewController(editorViewController, animated: true)
+    }
+    
+    
 //     MARK: - Actions
+
+    @objc
+    private func joinTapped() {
+        
+#warning("TODO: need to fix")
+        
+        guard let email = loginTextField.text,
+              viewModel.isValidEmail(email: email)
+        else { return createAlert(with: "Email isn't correct") }
+        
+        viewModel.checkEmailAvailability(email: email) { [weak self] isAvailable, error in
+            guard let self = self else { return }
+            if let error = error {
+//                self.createAlert(with: error.localizedDescription)
+            }
+            
+            if isAvailable {
+                guard let password = self.passwordTextField.text,
+                      self.viewModel.isValidPassword(password)
+                else { return self.createAlert(with: "Email or password isn't correct") }
+                
+                viewModel.signUp(email: email, password: password) { [weak self] error in
+                    self?.goToEditorScreen()
+                }
+            }
+        }
+    }
     
     @objc
     private func goToSignInAction() {
