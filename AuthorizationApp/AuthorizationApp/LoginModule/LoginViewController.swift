@@ -8,6 +8,7 @@
 import Combine
 import UIKit
 import SnapKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     private var viewModel: LoginViewModel
@@ -101,7 +102,7 @@ class LoginViewController: UIViewController {
         setupView()
 
         signInButton.addTarget(self, action: #selector(signInAction), for: .touchUpInside)
-        enterByGoogleButton.addTarget(self, action: #selector(enterByGoogleAction), for: .touchUpInside)
+        enterByGoogleButton.addTarget(self, action: #selector(signInWithGoogleAction), for: .touchUpInside)
         
         registrationButton.addTarget(self, action: #selector(goToCreateAccountAction), for: .touchUpInside)
     }
@@ -216,10 +217,15 @@ class LoginViewController: UIViewController {
     }
     
     @objc
-    private func enterByGoogleAction() {
-
+    private func signInWithGoogleAction() {
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [weak self] result, error in
+            if let error = error {
+                return
+            }
+            self?.goToEditorScreen()
+        }
     }
-    
+
     @objc
     private func goToCreateAccountAction() {
         let registrationVC = AppFlow.registrationView()

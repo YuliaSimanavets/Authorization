@@ -10,6 +10,8 @@ import FirebaseAuth
 import FirebaseDatabaseInternal
 
 final class RegistrationViewModel {
+    
+    #warning("TODO: need to fix")
     func signUp(email: String, password: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
