@@ -59,5 +59,20 @@ final class RegistrationViewModel {
             }
         }
     }
+    
+    func sendEmailVerification(completion: @escaping (Error?) -> Void) {
+        if let user = Auth.auth().currentUser {
+            user.sendEmailVerification { (error) in
+                if let error = error {
+                    completion(error)
+                } else {
+                    completion(nil)
+                }
+            }
+        } else {
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не авторизован"])
+            completion(error)
+        }
+    }
 }
 

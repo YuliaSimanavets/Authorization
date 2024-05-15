@@ -191,10 +191,15 @@ class RegistrationViewController: UIViewController {
 //                self.createAlert(with: error.localizedDescription)
             }
             
-            if isAvailable {
+            if !isAvailable {
                 guard let password = self.passwordTextField.text,
                       self.viewModel.isValidPassword(password)
                 else { return self.createAlert(with: "Email or password isn't correct") }
+                viewModel.sendEmailVerification { [weak self] error in
+                    if let error = error {
+                        self?.createAlert(with: error.localizedDescription)
+                    }
+                }
                 
                 viewModel.signUp(email: email, password: password) { [weak self] error in
                     self?.goToEditorScreen()
