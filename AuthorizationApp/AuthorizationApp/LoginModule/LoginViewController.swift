@@ -5,11 +5,13 @@
 //  Created by Yuliya on 13/05/2024.
 //
 
+import Combine
 import UIKit
 import SnapKit
 
 class LoginViewController: UIViewController {
     private var viewModel: LoginViewModel
+    private var cancellables = [AnyCancellable]()
     
     private let mainTitle = UILabel.new {
         $0.numberOfLines = 0
@@ -97,11 +99,25 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
+
         signInButton.addTarget(self, action: #selector(signInAction), for: .touchUpInside)
         enterByGoogleButton.addTarget(self, action: #selector(enterByGoogleAction), for: .touchUpInside)
         
-        registrationButton.addTarget(self, action: #selector(createAccountAction), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(goToCreateAccountAction), for: .touchUpInside)
+        
+//        viewModel.$errorMessage
+//            .sink { [weak self] errorMessage in
+//                self?.createAlert(with: errorMessage)
+//                print(errorMessage)
+//            }
+//            .store(in: &cancellables)
+    }
+    
+    private func createAlert(with message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
     private func setupView() {
@@ -180,7 +196,30 @@ class LoginViewController: UIViewController {
     
     @objc
     private func signInAction() {
+        guard let email = loginTextField.text,
+              viewModel.isValidEmail(email: email)
+        else { return createAlert(with: "Email isn't correct") }
         
+        viewModel.checkEmailAvailability(email: email) { [weak self] isAvailable, error in
+            guard let self = self else { return }
+            if let error = error {
+//                self.createAlert(with: error.localizedDescription)
+            }
+            
+            if isAvailable {
+                self.createAlert(with: "There is no user with this name. Please, sign up.")
+            } else {
+                guard let password = passwordTextField.text,
+                      viewModel.validatePassword(password)
+                else { return createAlert(with: "Email or password isn't correct") }
+                goToEditorScreen()
+            }
+        }
+    }
+    
+    private func goToEditorScreen() {
+        let editorViewController = AppFlow.editorView()
+        navigationController?.pushViewController(editorViewController, animated: true)
     }
     
     @objc
@@ -189,7 +228,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc
-    private func createAccountAction() {
+    private func goToCreateAccountAction() {
         let registrationVC = AppFlow.registrationView()
         navigationController?.pushViewController(registrationVC, animated: true)
     }
