@@ -104,13 +104,6 @@ class LoginViewController: UIViewController {
         enterByGoogleButton.addTarget(self, action: #selector(enterByGoogleAction), for: .touchUpInside)
         
         registrationButton.addTarget(self, action: #selector(goToCreateAccountAction), for: .touchUpInside)
-        
-//        viewModel.$errorMessage
-//            .sink { [weak self] errorMessage in
-//                self?.createAlert(with: errorMessage)
-//                print(errorMessage)
-//            }
-//            .store(in: &cancellables)
     }
     
     private func createAlert(with message: String) {
@@ -197,7 +190,7 @@ class LoginViewController: UIViewController {
     @objc
     private func signInAction() {
         guard let email = loginTextField.text,
-              viewModel.isValidEmail(email: email)
+              viewModel.isValidEmail(email)
         else { return createAlert(with: "Email isn't correct") }
         
         viewModel.checkEmailAvailability(email: email) { [weak self] isAvailable, error in
