@@ -41,8 +41,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate & 
     private let downloadButton = UIButton.new {
         $0.tintColor = .black
     }
+
+    private let signOutButton = UIButton.new {
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+    }
     
     private let resetButton = UIButton.new {
+        $0.backgroundColor = .systemRed
         $0.tintColor = .black
     }
     
@@ -88,10 +94,12 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate & 
         addPhotoButton.addTarget(self, action: #selector(addPhotoButtonTapped), for: .touchUpInside)
 
         downloadButton.addTarget(self, action: #selector(downloadPhotoTapped), for: .touchUpInside)
+        signOutButton.addTarget(self, action: #selector(signOutTapped), for: .touchUpInside)
         resetButton.addTarget(self, action: #selector(resetPhotoTapped), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: downloadButton)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: resetButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: signOutButton)
+        
         downloadButton.isHidden = true
         resetButton.isHidden = true
         
@@ -109,11 +117,12 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate & 
         view.addSubviews(addPhotoButton,
                          photoImageView,
                          editorCollectionView,
-                         downloadButton)
+                         resetButton)
         setupConstraints()
         
         addPhotoButton.setImage(UIImage(systemName: "plus"), for: .normal)
         downloadButton.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+        signOutButton.setTitle("Sign out", for: .normal)
         resetButton.setImage(UIImage(systemName: "arrowshape.turn.up.backward"), for: .normal)
     }
     
@@ -141,12 +150,19 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate & 
             $0.height.equalTo(60)
         }
         
-        downloadButton.snp.makeConstraints {
+        resetButton.snp.makeConstraints {
+            $0.bottom.equalTo(editorCollectionView.snp.top).inset(-30)
+            $0.trailing.equalTo(editorCollectionView.snp.trailing).inset(30)
             $0.size.equalTo(50)
         }
     }
     
-//    MARK: - Actions
+    //    MARK: - Actions
+    
+    @objc
+    private func signOutTapped() {
+        navigationController?.popViewController(animated: true)
+    }
     
     @objc
     private func addPhotoButtonTapped() {
@@ -155,11 +171,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         let alertController = UIAlertController(title: "Add Photo", message: nil, preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "Take Photo", style: .default) { _ in
+        let cameraAction = UIAlertAction(title: "Take Photo", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             imagePickerController.sourceType = .camera
             self.present(imagePickerController, animated: true, completion: nil)
         }
-        let galleryAction = UIAlertAction(title: "Choose from Gallery", style: .default) { _ in
+        let galleryAction = UIAlertAction(title: "Choose from Gallery", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true, completion: nil)
         }
@@ -204,11 +222,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate & 
         present(cropViewController, animated: true)
     }
     
-    func applyFilter(filterName: String) {
+    private func applyFilter(filterName: String) {
         guard let originalImage = newImage else { return }
         
         if filterName == "Original" {
-            photoImageView.image = originalImage
+            photoImageView.image = selectedImage
             return
         }
         
@@ -261,6 +279,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate & 
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension EditorViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard
@@ -280,6 +300,8 @@ extension EditorViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension EditorViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfItemsInSection()
@@ -296,6 +318,8 @@ extension EditorViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension EditorViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -306,6 +330,7 @@ extension EditorViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - UIImagePickerControllerDelegate
+
 extension EditorViewController {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -325,6 +350,8 @@ extension EditorViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: - CropViewControllerDelegate
 
 extension EditorViewController: CropViewControllerDelegate {
     func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
