@@ -40,22 +40,13 @@ final class LoginViewModel {
         return passwordPredicate.evaluate(with: password)
     }
     
-//    func login(email: String,
-//               password: String,
-//               completion: @escaping (AuthError?) -> Void) {
-//        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-//            if let error = error {
-//                var authError: AuthError
-//                switch AuthErrorCode(error: error._code) {
-//                case .userNotFound, .wrongPassword:
-//                    authError = .invalidEmail
-//                default:
-//                    authError = .unknown
-//                }
-//                completion(authError)
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//    }
+    func resetPassword(by email: String, completion: @escaping (Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
+    }
 }

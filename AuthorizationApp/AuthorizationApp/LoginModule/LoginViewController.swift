@@ -105,10 +105,11 @@ class LoginViewController: UIViewController {
         enterByGoogleButton.addTarget(self, action: #selector(signInWithGoogleAction), for: .touchUpInside)
         
         registrationButton.addTarget(self, action: #selector(goToCreateAccountAction), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordAction), for: .touchUpInside)
     }
     
     private func createAlert(with message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Hi", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel)
         alert.addAction(okAction)
         present(alert, animated: true)
@@ -139,6 +140,50 @@ class LoginViewController: UIViewController {
         registrationButton.setTitle(" Sign up", for: .normal)
 
         setupConstraints()
+    }
+
+    private func createEditorScreen() {
+        let editorViewController = AppFlow.editorView()
+        navigationController?.pushViewController(editorViewController, animated: true)
+    }
+    
+    private func createRegistrationScreen() {
+        let registrationVC = AppFlow.registrationView()
+        navigationController?.pushViewController(registrationVC, animated: true)
+    }
+    
+    private func showPasswordRecoveryAlert(by email: String) {
+        let alertController = UIAlertController(title: "Password recovery", message: "Enter your email to recover your password", preferredStyle: .alert)
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Email"
+            textField.keyboardType = .emailAddress
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        let recoverAction = UIAlertAction(title: "Next", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            if let email = alertController.textFields?.first?.text, !email.isEmpty {
+                self.viewModel.checkEmailAvailability(email: email) { isAvailable, error in
+                    if !isAvailable {
+                        self.viewModel.resetPassword(by: email) { error in
+                            if let error = error {
+                                self.createAlert(with: error.localizedDescription)
+                            } else {
+                                self.createAlert(with: "We have sent you an email to reset your password.")
+                            }
+                        }
+                    } else {
+                        self.createAlert(with: "Smth was wrong :(")
+                    }
+                }
+            }
+        }
+        alertController.addAction(recoverAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     private func setupConstraints() {
@@ -197,7 +242,7 @@ class LoginViewController: UIViewController {
         viewModel.checkEmailAvailability(email: email) { [weak self] isAvailable, error in
             guard let self = self else { return }
             if let error = error {
-//                self.createAlert(with: error.localizedDescription)
+                self.createAlert(with: error.localizedDescription)
             }
             
             if isAvailable {
@@ -206,36 +251,36 @@ class LoginViewController: UIViewController {
                 guard let password = passwordTextField.text,
                       viewModel.isValidPassword(password)
                 else { return createAlert(with: "Email or password isn't correct") }
-                goToEditorScreen()
+                createEditorScreen()
             }
         }
-    }
-    
-    private func goToEditorScreen() {
-        let editorViewController = AppFlow.editorView()
-        navigationController?.pushViewController(editorViewController, animated: true)
     }
     
     @objc
     private func signInWithGoogleAction() {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { [weak self] result, error in
+            guard let self = self else { return }
             if let error = error {
-                return
+                self.createAlert(with: error.localizedDescription)
             }
-            self?.goToEditorScreen()
+            self.createEditorScreen()
         }
+    }
+    
+    @objc
+    private func forgotPasswordAction() {
+        guard let email = loginTextField.text else { return }
+        showPasswordRecoveryAlert(by: email)
     }
 
     @objc
     private func goToCreateAccountAction() {
-        let registrationVC = AppFlow.registrationView()
-        navigationController?.pushViewController(registrationVC, animated: true)
+        createRegistrationScreen()
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let password = (passwordTextField.text ?? "") + string
         return false
     }
     
